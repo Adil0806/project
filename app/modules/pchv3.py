@@ -2,6 +2,7 @@
 
 Разработчик: Альмуханов А. М. (ветка ``feature/pchv3``).
 """
+# Модуль опроса и управления ПЧВ3
 from __future__ import annotations
 
 import time
