@@ -13,7 +13,7 @@ from app.core.base import BaseDevice, to_float
 from app.core.routing import build_router
 
 CHANNELS = 8
-
+ 
 
 class Trm138(BaseDevice):
     """Измеритель-регулятор ТРМ138: 8 входов температуры и 8 выходов."""
