@@ -3,7 +3,6 @@
 Разработчик: Нестор В. В. (ветка ``feature/trm138``).
 """
 from __future__ import annotations
-
 import math
 import random
 import time
@@ -13,7 +12,6 @@ from app.core.base import BaseDevice, to_float
 from app.core.routing import build_router
 
 CHANNELS = 8
- 
 
 class Trm138(BaseDevice):
     """Измеритель-регулятор ТРМ138: 8 входов температуры и 8 выходов."""
