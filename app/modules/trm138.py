@@ -1,9 +1,8 @@
 """КИП: ТРМ138 — 8-канальный измеритель-регулятор (Modbus RTU).
-
 Разработчик: Нестор В. В. (ветка ``feature/trm138``).
 """
-from __future__ import annotations
 
+from __future__ import annotations
 import math
 import random
 import time
@@ -13,7 +12,6 @@ from app.core.base import BaseDevice, to_float
 from app.core.routing import build_router
 
 CHANNELS = 8
- 
 
 class Trm138(BaseDevice):
     """Измеритель-регулятор ТРМ138: 8 входов температуры и 8 выходов."""
@@ -67,6 +65,8 @@ class Trm138(BaseDevice):
             if key in values:
                 self._sp[n] = to_float(values[key], -50, 1000, self._sp[n])
         self.log("INFO", "Записаны уставки каналов")
+
+
 
 
 device = Trm138()
