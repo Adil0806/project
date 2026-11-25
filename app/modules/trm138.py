@@ -1,7 +1,7 @@
 """КИП: ТРМ138 — 8-канальный измеритель-регулятор (Modbus RTU).
-
 Разработчик: Нестор В. В. (ветка ``feature/trm138``).
 """
+
 from __future__ import annotations
 import math
 import random
@@ -65,6 +65,8 @@ class Trm138(BaseDevice):
             if key in values:
                 self._sp[n] = to_float(values[key], -50, 1000, self._sp[n])
         self.log("INFO", "Записаны уставки каналов")
+
+
 
 
 device = Trm138()
