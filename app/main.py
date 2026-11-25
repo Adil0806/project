@@ -6,7 +6,7 @@
 
 Swagger UI: ``/docs``, ReDoc: ``/redoc``.
 """
-from __future__ import annotations
+from __future__ import annotations #1
 
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
