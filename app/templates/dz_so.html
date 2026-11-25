@@ -1,0 +1,34 @@
+{% extends "device_base.html" %}
+{% from "parts/macros.html" import indicator %}
+{% block controls %}
+<div class="card">
+  <div class="card-header fw-semibold">Концентрация CO</div>
+  <div class="card-body text-center">
+    <div class="display-4"><span data-bind="concentration" data-digits="1">{{ state.concentration }}</span> <small class="fs-5 text-secondary">{{ state.unit }}</small></div>
+    <span class="badge fs-6 text-bg-{{ ['success','warning','danger'][state.level] }}" data-bind="status"
+      data-level-key="level" data-level-classes="text-bg-success,text-bg-warning,text-bg-danger">{{ state.status }}</span>
+  </div>
+</div>
+<div class="row g-3 mt-0">
+  <div class="col-md-6">
+    <div class="card h-100">
+      <div class="card-header fw-semibold">Пороги (RW)</div>
+      <div class="card-body">
+        <label class="form-label" for="thr1">Порог 1, мг/м³</label>
+        <input id="thr1" name="thr1" type="number" step="0.5" min="0" class="form-control mb-2" value="{{ state.thr1 }}">
+        <label class="form-label" for="thr2">Порог 2, мг/м³</label>
+        <input id="thr2" name="thr2" type="number" step="0.5" min="0" class="form-control" value="{{ state.thr2 }}">
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card h-100">
+      <div class="card-header fw-semibold">Реле (RO)</div>
+      <div class="card-body">
+        {{ indicator("relay1", "Реле 1", state.relay1) }}
+        {{ indicator("relay2", "Реле 2", state.relay2) }}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

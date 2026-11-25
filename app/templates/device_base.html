@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}{{ device.title }} — SCADA{% endblock %}
+{% block content %}
+<div class="row g-3">
+  <div class="col-lg-8">
+    <form method="post" action="/{{ device.slug }}/">
+      <button class="btn btn-success w-100 mb-3" type="submit">Применить изменения</button>
+      {% block controls %}{% endblock %}
+    </form>
+    {% include "parts/logs.html" %}
+  </div>
+  <div class="col-lg-4">
+    {% include "parts/image_card.html" %}
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}<script src="/static/js/poll.js"></script>{% endblock %}

@@ -1,0 +1,9 @@
+services:
+  scada:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      SCADA_SIMULATION: "1"
+      SCADA_REFRESH_MS: "2000"
+    restart: unless-stopped

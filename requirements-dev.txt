@@ -1,0 +1,5 @@
+-r requirements.txt
+pytest>=8
+httpx>=0.27
+sphinx>=7
+sphinx-rtd-theme>=2

@@ -1,0 +1,25 @@
+{% extends "device_base.html" %}
+{% from "parts/macros.html" import indicator %}
+{% block controls %}
+<div class="card">
+  <div class="card-header fw-semibold">Каналы ТРМ138</div>
+  <div class="table-responsive">
+  <table class="table table-sm align-middle mb-0">
+    <thead><tr><th>Канал</th><th>Измерено, °C</th><th>Уставка, °C</th><th>Выход</th><th>Статус</th></tr></thead>
+    <tbody>
+    {% for ch in state.channels %}
+      {% set i = loop.index0 %}
+      <tr>
+        <td>{{ ch.n }}</td>
+        <td><strong data-bind="channels.{{ i }}.pv" data-digits="1">{{ ch.pv }}</strong></td>
+        <td><input type="number" step="0.5" class="form-control form-control-sm w-auto" name="sp{{ ch.n }}" value="{{ ch.sp }}" aria-label="Уставка канала {{ ch.n }}"></td>
+        <td>{{ indicator("channels." ~ i ~ ".out", "", ch.out) }}</td>
+        <td><span class="badge text-bg-{{ 'warning' if ch.alarm else 'success' }}" data-bind="channels.{{ i }}.status" data-class-key="channels.{{ i }}.alarm" data-class-true="text-bg-warning" data-class-false="text-bg-success">{{ ch.status }}</span></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  <div class="card-footer small">Каналов с отклонением: <strong data-bind="alarms">{{ state.alarms }}</strong></div>
+</div>
+{% endblock %}

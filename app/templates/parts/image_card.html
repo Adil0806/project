@@ -1,0 +1,14 @@
+<div class="card text-center">
+  <img src="{{ device.image }}" class="card-img-top p-3" alt="Модуль {{ device.model }}" width="400" height="300">
+  <div class="card-body">
+    <h2 class="h6">{{ device.model }}</h2>
+    <p class="text-secondary mb-2">{{ device.protocol }}</p>
+    <p class="small text-secondary">{{ device.description }}</p>
+    <button type="button" id="poll-btn" class="btn btn-outline-primary w-100">Опросить устройство</button>
+    <div class="form-check form-switch text-start mt-3">
+      <input class="form-check-input" type="checkbox" id="auto-refresh" checked>
+      <label class="form-check-label" for="auto-refresh">Автообновление</label>
+    </div>
+    <div class="small mt-2">Связь: <span id="conn-badge" class="badge text-bg-success">онлайн</span></div>
+  </div>
+</div>

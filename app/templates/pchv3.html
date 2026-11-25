@@ -1,0 +1,34 @@
+{% extends "device_base.html" %}
+{% from "parts/macros.html" import indicator %}
+{% block controls %}
+<div class="row g-3">
+  <div class="col-md-6">
+    <div class="card h-100">
+      <div class="card-header fw-semibold">Управление (RW)</div>
+      <div class="card-body">
+        <label class="form-label" for="setpoint">Уставка частоты, Гц</label>
+        <input id="setpoint" name="setpoint" type="number" min="0" max="50" step="0.5" class="form-control mb-3" value="{{ state.setpoint }}">
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="run" name="run" {% if state.run %}checked{% endif %}>
+          <label class="form-check-label" for="run">Пуск</label>
+        </div>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="reverse" name="reverse" {% if state.reverse %}checked{% endif %}>
+          <label class="form-check-label" for="reverse">Реверс</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card h-100">
+      <div class="card-header fw-semibold">Состояние (RO)</div>
+      <div class="card-body">
+        <p class="mb-1">Выходная частота: <strong data-bind="freq" data-digits="1">{{ state.freq }}</strong> Гц</p>
+        <p class="mb-1">Ток: <strong data-bind="current" data-digits="2">{{ state.current }}</strong> А</p>
+        <p class="mb-2">Статус: <span class="badge text-bg-primary" data-bind="status">{{ state.status }}</span></p>
+        {{ indicator("fault", "Авария", state.fault) }}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

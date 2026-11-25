@@ -1,0 +1,6 @@
+{% macro indicator(key, label, state) -%}
+<div class="form-check form-check-inline text-center">
+  <input class="form-check-input" type="checkbox" data-check="{{ key }}" {% if state %}checked{% endif %} disabled>
+  <label class="form-check-label d-block small">{{ label }}</label>
+</div>
+{%- endmacro %}
