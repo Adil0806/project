@@ -51,3 +51,5 @@ class IoModule(BaseDevice):
 
 device = IoModule()
 router = build_router(device)
+
+# IO-модуль: МВ110 (ввод) и МУ110 (вывод)
